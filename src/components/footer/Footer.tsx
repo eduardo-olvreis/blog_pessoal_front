@@ -1,4 +1,4 @@
-import { FacebookLogoIcon, InstagramLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
+import { GithubLogoIcon, InstagramLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
 
 function Footer(){
   let data = new Date().getFullYear()
@@ -13,10 +13,16 @@ function Footer(){
           <p className="text-lg">
             Acesse nossas redes sociais
           </p>
-          <div className="flex">
-            <LinkedinLogoIcon size={48} weight="bold" />
-            <InstagramLogoIcon size={48} weight="bold" />
-            <FacebookLogoIcon size={48} weight="bold" />
+          <div className="flex gap-2">
+            <a href="https://www.linkedin.com/in/eduardo-olvreis/">
+              <LinkedinLogoIcon size={48} weight="bold" />
+            </a>
+            <a href="https://www.instagram.com">
+              <InstagramLogoIcon size={48} weight="bold" />
+            </a>
+            <a href="https://github.com/eduardo-olvreis">
+              <GithubLogoIcon size={48} weight="bold" />
+            </a>
           </div>
         </div>
       </div>
