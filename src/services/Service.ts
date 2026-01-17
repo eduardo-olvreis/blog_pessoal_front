@@ -1,5 +1,4 @@
 import axios from "axios";
-import { url } from "inspector";
 
 const api = axios.create({
   baseURL: "https://blogpessoal-zkid.onrender.com"
