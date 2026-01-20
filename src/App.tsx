@@ -7,6 +7,7 @@ import Footer from "./components/footer/Footer"
 import Cadastro from "./pages/cadastro/Cadastro";
 import Login from "./pages/login/Login";
 import ListaTemas from "./components/tema/listatemas/ListaTemas";
+import DeletarTema from "./components/tema/deletartema/DeletarTema";
 
 function App(){
   return(
@@ -22,6 +23,7 @@ function App(){
               <Route path="/temas" element={<ListaTemas/>} />
               <Route path="/cadastrartema" element={<FormTema />} />
               <Route path="/editartema/:id" element={<FormTema />} />
+              <Route path="/deletartema/:id" element={<DeletarTema />} />
             </Routes>
           </div>
           <Footer/>
