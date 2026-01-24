@@ -4,6 +4,7 @@ import type Tema from "../../../models/Tema";
 import type Postagem from "../../../models/Postagem";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormPostagem() {
   const navigate = useNavigate();
@@ -50,14 +51,14 @@ function FormPostagem() {
       });
     } catch (error: any) {
       if (error.toString().includes("401")) {
-        alert("Erro de autenticação ao buscar temas (Token inválido?)");
+        ToastAlerta("Erro de autenticação ao buscar temas (Token inválido?)", "erro");
       }
     }
   }
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      ToastAlerta("Você precisa estar logado", "info");
       navigate("/");
     }
   }, [token]);
@@ -92,8 +93,6 @@ function FormPostagem() {
   async function gerarNovaPostagem(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsLoading(true);
-
-    // Verificação de segurança manual para garantir que o token está indo certo
     console.log("Token sendo enviado:", token); 
 
     if (id !== undefined) {
@@ -101,12 +100,12 @@ function FormPostagem() {
         await atualizar("/postagens", postagem, setPostagem, {
           headers: { Authorization: token },
         });
-        alert("Postagem atualizada com sucesso");
+        ToastAlerta("Postagem atualizada com sucesso", "sucesso");
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          alert("Erro ao atualizar a Postagem");
+          ToastAlerta("Erro ao atualizar a Postagem", "erro");
         }
       }
     } else {
@@ -114,12 +113,12 @@ function FormPostagem() {
         await cadastrar("/postagens", postagem, setPostagem, {
           headers: { Authorization: token },
         });
-        alert("Postagem cadastrada com sucesso");
+        ToastAlerta("Postagem cadastrada com sucesso", "sucesso");
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          alert("Erro ao cadastrar a Postagem");
+          ToastAlerta("Erro ao cadastrar a Postagem", "erro");
         }
       }
     }
